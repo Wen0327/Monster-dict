@@ -1,34 +1,30 @@
 import localeData from "./localeData";
 
+// 获取语言设置的函数
 const getLanguageSetting = (lang) => {
   let language =
     (navigator.languages && navigator.languages[0]) ||
     navigator.language ||
-    navigator.userLanguage ||
-    navigator.browserLanguages[0];
+    navigator.userLanguage;
 
   let languageSplitRegionCodeCode = language.split(/[_-]+/);
   let languageWithUpperRegionCodeCode = "";
-  
+
   if (languageSplitRegionCodeCode[1]) {
-    // if language is this type "zh-tw"/"zh-TW", modify it as "zh-TW" for zh_tw.json use
+    // 将地区代码转换为大写，并用连字符连接
     languageSplitRegionCodeCode[1] = languageSplitRegionCodeCode[1].toUpperCase();
     languageWithUpperRegionCodeCode = languageSplitRegionCodeCode.join("-");
   } else {
-    // if language only has region code like "zh", set region language for localeData
-    switch (languageSplitRegionCodeCode[0]) {
-      case "zh":
-        languageWithUpperRegionCodeCode = "zh-TW";
-        break;
-      default:
-        break;
+    // 如果没有地区代码，默认为 "zh-TW"
+    if (languageSplitRegionCodeCode[0] === "zh") {
+      languageWithUpperRegionCodeCode = "zh-TW";
     }
   }
 
   let messages =
-    localeData[language] ||
     localeData[languageWithUpperRegionCodeCode] || 
-    localeData.EN;
+    localeData[language] || 
+    localeData.en;
 
   if (lang != null) {
     if (lang === "Browser Language") {
@@ -39,11 +35,10 @@ const getLanguageSetting = (lang) => {
         languageSetting: "Browser Language",
       };
     } else {
-      messages = localeData[lang] || localeData.EN;
-
-      localStorage.setItem("locale", `${lang}`);
+      messages = localeData[lang.replace("_", "-")] || localeData.en;
+      localStorage.setItem("locale", lang.replace("_", "-"));
       return {
-        locale: lang,
+        locale: lang.replace("_", "-"),
         messages: messages,
         languageSetting: lang,
       };

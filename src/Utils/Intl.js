@@ -7,7 +7,7 @@ import zh_TW from "antd/lib/locale/zh_TW";
 import zh_CN from "antd/lib/locale/zh_CN";
 import en_US from "antd/lib/locale/en_US";
 import ja_JP from "../Static/Language/i18n/ja_jp";
-import App from "../Container/App";
+import App from "../Container/App.js";
 
 
 const Intl = (props) => {
@@ -24,12 +24,14 @@ const Intl = (props) => {
 
   const antdLocalData = antdData[languageWithLodash] || zh_TW;
 
+  const {currentLanguage}= props
+
   return (
     <IntlProvider
-      locale={props.currentLanguage.locale}
-      key={props.currentLanguage.locale}
-      messages={props.currentLanguage.messages}
-      defaultLocale="zh-TW"
+      locale={currentLanguage.locale}
+      key={currentLanguage.locale}
+      messages={currentLanguage.messages}
+      defaultLocale="TW"
     >
       <ConfigProvider locale={antdLocalData}>
         <App />
