@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import languageReducer from '../Reducers/language'; 
+import languageReducer from './language'; 
 // import userReducer from './userReducer'; 
 
 
