@@ -2,8 +2,17 @@ import React from "react";
 import { Layout, Menu, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import luciferLogo from '../Static/Images/luficer.png';
+import styled from "styled-components";
 
 const { Header } = Layout;
+
+const Item = Menu.Item;
+
+const NavigationItem = styled.div`
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: bold;
+`;
 
 const NavigationBar = () => {
   return (
@@ -18,29 +27,11 @@ const NavigationBar = () => {
           />
           {/* 导航菜单 */}
           <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">首页</Menu.Item>
-            <Menu.Item key="2">排行榜</Menu.Item>
-            <Menu.Item key="3">发现</Menu.Item>
-            <Menu.Item key="4">WIKI</Menu.Item>
-            <Menu.Item key="5">大会员礼包</Menu.Item>
-            <Menu.Item key="6">充值中心</Menu.Item>
-            <Menu.Item key="7">我的</Menu.Item>
+            <Item key="1">圖鑑</Item>
+            <Item key="2">非限定</Item>
           </Menu>
         </div>
 
-        {/* 右侧搜索框 */}
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Input
-            placeholder="搜索游戏&WIKI"
-            prefix={<SearchOutlined />}
-            style={{ width: 300, borderRadius: "20px" }}
-          />
-          <img
-            src="https://yourprofileicon.com/icon.png" // 替换为你的用户图标链接
-            alt="user-icon"
-            style={{ height: "40px", marginLeft: "20px", borderRadius: "50%" }}
-          />
-        </div>
       </Header>
     </Layout>
   );

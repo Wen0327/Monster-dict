@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router"; 
 import { HashRouter } from "react-router-dom";
-import App from "../../Container/App";
+import App from "../Container/App";
 import { hot } from "react-hot-loader/root";
 
 const RootRouter = () => {
