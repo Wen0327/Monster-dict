@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/* 主体背景与文字颜色 */
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+  /* 按钮样式 */
+  /* Dropdown 菜单 */
+  /* Antd Layout 样式 */
+  /* 按钮 */
+}
+body.dark-mode a {
+  color: rgba(255, 255, 255, 0.8);
+}
+body.dark-mode p,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode span,
+body.dark-mode div,
+body.dark-mode button {
+  color: #fff;
+}
+body.dark-mode .ant-layout-header {
+  background-color: #222;
+}
+body.dark-mode .ant-menu-item {
+  color: #fff;
+  background-color: transparent !important;
+}
+body.dark-mode .ant-menu-item:hover {
+  background-color: #444 !important;
+}
+body.dark-mode .ant-menu-item-selected {
+  background-color: #555 !important;
+  color: #fff !important;
+}
+body.dark-mode .ant-btn {
+  color: #fff;
+  background-color: #555;
+}
+body.dark-mode .ant-dropdown-menu {
+  background-color: #333;
+  border-color: #444;
+}
+body.dark-mode .ant-dropdown-menu-item {
+  color: #fff;
+}
+body.dark-mode .ant-dropdown-menu-item:hover {
+  background-color: #555;
+}
+body.dark-mode .ant-layout {
+  background-color: #333;
+}
+body.dark-mode .ant-btn {
+  color: #fff;
+  background-color: #555;
+}
+
+/* 暗模式切换按钮样式 */
+.dark-mode-toggle {
+  width: 50px;
+  height: 25px;
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+}
+.dark-mode-toggle::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.custom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  background-color: #fff;
+}
+body.dark-mode .custom-header {
+  background-color: #222;
+}/*# sourceMappingURL=style.css.map */

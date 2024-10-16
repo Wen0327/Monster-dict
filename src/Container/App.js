@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Button, Layout } from "antd";
+import { Layout } from "antd";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import localeData from "../Static/Language/Setting/localeData";
 import NavigationBar from "./NavigationBar";
+
+const { Content } = Layout;
 
 const App = () => {
   const [locale, setLocale] = useState(
@@ -19,12 +21,10 @@ const App = () => {
   return (
     <IntlProvider locale={locale} messages={messages}>
       <Layout style={{ height: "100vh" }}>
-        <Layout style={{ height: "100vh" }}>
-        <NavigationBar/>
-          <Button onClick={() => switchLanguage("en")}>English</Button>
-          <Button onClick={() => switchLanguage("zh-TW")}>繁體中文</Button>
+        <NavigationBar switchLanguage={switchLanguage} />
+        <Content style={{ padding: "20px", textAlign: "center" }}>
           <FormattedMessage id="welcome" />
-        </Layout>
+        </Content>
       </Layout>
     </IntlProvider>
   );

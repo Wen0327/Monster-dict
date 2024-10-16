@@ -17,11 +17,11 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.scss$/,  // 处理 .scss 文件
+        use: ['style-loader', 'css-loader', 'sass-loader'],  // 添加 sass-loader
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/i,  // 新增的规则，处理图片文件
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,  // 处理图片文件
         use: [
           {
             loader: 'file-loader',
