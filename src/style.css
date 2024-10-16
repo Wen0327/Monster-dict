@@ -1,12 +1,6 @@
-@charset "UTF-8";
-/* 主体背景与文字颜色 */
 body.dark-mode {
   background-color: #333;
   color: #fff;
-  /* 按钮样式 */
-  /* Dropdown 菜单 */
-  /* Antd Layout 样式 */
-  /* 按钮 */
 }
 body.dark-mode a {
   color: rgba(255, 255, 255, 0.8);
@@ -27,8 +21,8 @@ body.dark-mode .ant-layout-header {
   background-color: #222;
 }
 body.dark-mode .ant-menu-item {
-  color: #fff;
-  background-color: transparent !important;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #222 !important;
 }
 body.dark-mode .ant-menu-item:hover {
   background-color: #444 !important;
@@ -51,6 +45,45 @@ body.dark-mode .ant-dropdown-menu-item {
 body.dark-mode .ant-dropdown-menu-item:hover {
   background-color: #555;
 }
+body.dark-mode .ant-dropdown .ant-btn {
+  background-color: #222 !important;
+  border-color: #444 !important;
+}
+body.dark-mode .ant-dropdown .ant-btn:hover {
+  background-color: #444 !important;
+}
+body.dark-mode .ant-btn-variant-outlined {
+  background-color: #222 !important;
+  color: #fff !important;
+}
+body.dark-mode .ant-btn-variant-outlined:hover {
+  background-color: #444 !important;
+  color: #fff !important;
+}
+body.dark-mode .ant-dropdown .ant-btn {
+  background-color: #222 !important;
+  border-color: #444 !important;
+  color: #fff !important;
+}
+body.dark-mode .ant-dropdown .ant-btn:hover {
+  background-color: #444 !important;
+  border-color: #555 !important;
+}
+body.dark-mode body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+body.dark-mode body.dark-mode .ant-menu-item {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #222 !important;
+}
+body.dark-mode body.dark-mode .ant-menu-item:hover {
+  background-color: #444 !important;
+}
+body.dark-mode body.dark-mode .ant-menu-item-selected {
+  background-color: #555 !important;
+  color: #fff !important;
+}
 body.dark-mode .ant-layout {
   background-color: #333;
 }
@@ -59,11 +92,10 @@ body.dark-mode .ant-btn {
   background-color: #555;
 }
 
-/* 暗模式切换按钮样式 */
 .dark-mode-toggle {
   width: 50px;
   height: 25px;
-  background-color: #f0f0f0;
+  background-color: #fff;
   border-radius: 30px;
   position: relative;
   cursor: pointer;

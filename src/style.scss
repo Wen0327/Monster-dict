@@ -5,7 +5,6 @@ $gray: #444;
 $light-gray: #555;
 $highlight-gray: rgba($White, 0.8);
 
-/* 主体背景与文字颜色 */
 body.dark-mode {
   background-color: $dark-gray;
   color: $White;
@@ -32,8 +31,8 @@ body.dark-mode {
   }
 
   .ant-menu-item {
-    color: $White;
-    background-color: transparent !important;
+    color: $highlight-gray;
+    background-color: $Black200 !important;
 
     &:hover {
       background-color: $gray !important;
@@ -45,13 +44,11 @@ body.dark-mode {
     }
   }
 
-  /* 按钮样式 */
   .ant-btn {
     color: $White;
     background-color: $light-gray;
   }
 
-  /* Dropdown 菜单 */
   .ant-dropdown-menu {
     background-color: $dark-gray;
     border-color: $gray;
@@ -65,23 +62,72 @@ body.dark-mode {
     }
   }
 
-  /* Antd Layout 样式 */
+  .ant-dropdown {
+    .ant-btn {
+      background-color: $Black200 !important;
+      border-color: $gray !important;
+
+      &:hover {
+        background-color: $gray !important;
+      }
+    }
+  }
+
+  .ant-btn-variant-outlined {
+    background-color: $Black200 !important;
+    color: $White !important;
+
+    &:hover {
+      background-color: $gray !important;
+      color: $White !important;
+    }
+  }
+
+  .ant-dropdown .ant-btn {
+    background-color: $Black200 !important;
+    border-color: $gray !important;
+    color: $White !important;
+
+    &:hover {
+      background-color: $gray !important;
+      border-color: $light-gray !important;
+    }
+  }
+
+  body.dark-mode {
+    background-color: $dark-gray;
+    color: $White;
+
+    .ant-menu-item {
+      color: $highlight-gray;
+      background-color: $Black200 !important;
+
+      &:hover {
+        background-color: $gray !important;
+      }
+
+      &-selected {
+        background-color: $light-gray !important;
+        color: $White !important;
+      }
+    }
+  }
+
+  //   Antd Layout
   .ant-layout {
     background-color: $dark-gray;
   }
 
-  /* 按钮 */
   .ant-btn {
     color: $White;
     background-color: $light-gray;
   }
 }
 
-/* 暗模式切换按钮样式 */
 .dark-mode-toggle {
   width: 50px;
   height: 25px;
-  background-color: #f0f0f0;
+  background-color: $White;
   border-radius: 30px;
   position: relative;
   cursor: pointer;
@@ -99,14 +145,14 @@ body.dark-mode {
 }
 
 .custom-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
-  
-    body.dark-mode & {
-      background-color: $Black200;
-    }
-  
-    background-color: $White;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+
+  body.dark-mode & {
+    background-color: $Black200;
   }
+
+  background-color: $White;
+}
