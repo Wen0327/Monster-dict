@@ -23,7 +23,7 @@ body.dark-mode {
   span,
   div,
   button {
-    color: $White;
+    color: $White !important;
   }
 
   .ant-layout-header {
@@ -62,62 +62,29 @@ body.dark-mode {
     }
   }
 
-  .ant-dropdown {
-    .ant-btn {
-      background-color: $Black200 !important;
-      border-color: $gray !important;
-
-      &:hover {
-        background-color: $gray !important;
-      }
-    }
-  }
-
+  .ant-dropdown .ant-btn,
   .ant-btn-variant-outlined {
-    background-color: $Black200 !important;
-    color: $White !important;
-
-    &:hover {
-      background-color: $gray !important;
-      color: $White !important;
-    }
-  }
-
-  .ant-dropdown .ant-btn {
     background-color: $Black200 !important;
     border-color: $gray !important;
     color: $White !important;
 
     &:hover {
       background-color: $gray !important;
+      color: $White !important;
       border-color: $light-gray !important;
     }
   }
 
-  body.dark-mode {
-    background-color: $dark-gray;
-    color: $White;
-
-    .ant-menu-item {
-      color: $highlight-gray;
-      background-color: $Black200 !important;
-
-      &:hover {
-        background-color: $gray !important;
-      }
-
-      &-selected {
-        background-color: $light-gray !important;
-        color: $White !important;
-      }
-    }
+  .ant-layout-content {
+    color: $White !important;
   }
 
-  //   Antd Layout
+  // Antd Layout 背景
   .ant-layout {
     background-color: $dark-gray;
   }
 
+  // 按鈕樣式統一
   .ant-btn {
     color: $White;
     background-color: $light-gray;
@@ -149,10 +116,16 @@ body.dark-mode {
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
+  background-color: $White;
 
   body.dark-mode & {
     background-color: $Black200;
   }
+}
 
-  background-color: $White;
+.aa {
+  min-width: 180px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

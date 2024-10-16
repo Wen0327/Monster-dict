@@ -9,13 +9,9 @@ const { Header } = Layout;
 
 const Item = Menu.Item;
 
-const NavigationItem = styled.div`
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-  font-weight: bold;
-`;
-
 const NavigationBar = ({ switchLanguage }) => {
+  const [darkMode, setDarkMode] = useState(false);
+
   const DarkModeToggle = styled.div`
     display: inline-block;
     position: relative;
@@ -38,8 +34,6 @@ const NavigationBar = ({ switchLanguage }) => {
       transition: left 0.3s ease;
     }
   `;
-
-  const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -83,16 +77,19 @@ const NavigationBar = ({ switchLanguage }) => {
         </div>
 
         {/* 右侧语言切换按钮 */}
-        <Dropdown overlay={languageMenu} trigger={["click"]}>
-          <Button>
-            选择语言 <DownOutlined />
-          </Button>
-        </Dropdown>
 
-        <DarkModeToggle
-          darkMode={darkMode}
-          onClick={toggleDarkMode}
-        ></DarkModeToggle>
+        <div className="aa">
+          <Dropdown overlay={languageMenu} trigger={["click"]} >
+            <Button>
+              选择语言 <DownOutlined />
+            </Button>
+          </Dropdown>
+
+          <DarkModeToggle
+            darkMode={darkMode}
+            onClick={toggleDarkMode}
+          ></DarkModeToggle>
+        </div>
       </Header>
     </Layout>
   );
