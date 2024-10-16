@@ -98,7 +98,7 @@ body.dark-mode .custom-header {
   background-color: #222;
 }
 
-.aa {
+.displayToggle {
   min-width: 180px;
   display: flex;
   justify-content: space-between;

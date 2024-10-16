@@ -78,7 +78,7 @@ const NavigationBar = ({ switchLanguage }) => {
 
         {/* 右侧语言切换按钮 */}
 
-        <div className="aa">
+        <div className="displayToggle">
           <Dropdown overlay={languageMenu} trigger={["click"]} >
             <Button>
               选择语言 <DownOutlined />
