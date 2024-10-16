@@ -20,7 +20,7 @@ body.dark-mode {
   h4,
   h5,
   h6,
-  span,
+
   div,
   button {
     color: $White !important;
@@ -128,4 +128,9 @@ body.dark-mode {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.anticon-sun{
+  color: rgb(217, 49, 71)
+  
 }
