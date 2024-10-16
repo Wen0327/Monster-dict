@@ -23,8 +23,7 @@ const getLanguageSetting = (lang) => {
 
   let messages =
     localeData[languageWithUpperRegionCodeCode] || 
-    localeData[language] || 
-    localeData.en;
+    localeData[language] 
 
   if (lang != null) {
     if (lang === "Browser Language") {
@@ -35,7 +34,7 @@ const getLanguageSetting = (lang) => {
         languageSetting: "Browser Language",
       };
     } else {
-      messages = localeData[lang.replace("_", "-")] || localeData.en;
+      messages = localeData[lang.replace("_", "-")] ;
       localStorage.setItem("locale", lang.replace("_", "-"));
       return {
         locale: lang.replace("_", "-"),

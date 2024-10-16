@@ -99,7 +99,7 @@ body.dark-mode .custom-header {
 }
 
 .displayToggle {
-  min-width: 180px;
+  min-width: 215px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Layout, Menu, Input, Dropdown, Button } from "antd";
-import { SearchOutlined, DownOutlined } from "@ant-design/icons";
+import { GlobalOutlined, DownOutlined } from "@ant-design/icons";
 import luciferLogo from "../Static/Images/luficer.png";
 import styled from "styled-components";
 import "../style.scss";
+import { FormattedMessage } from "react-intl";
 
 const { Header } = Layout;
 
@@ -71,17 +72,16 @@ const NavigationBar = ({ switchLanguage }) => {
           />
           {/* 导航菜单 */}
           <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Item key="1">圖鑑</Item>
-            <Item key="2">非限定</Item>
+            <Item style={{ textAlign:'center', minWidth: '120px' }} key="1" ><FormattedMessage id='Fave.Character'/></Item>
           </Menu>
         </div>
 
         {/* 右侧语言切换按钮 */}
 
         <div className="displayToggle">
-          <Dropdown overlay={languageMenu} trigger={["click"]} >
-            <Button>
-              选择语言 <DownOutlined />
+          <Dropdown overlay={languageMenu} trigger={["click"]}>
+            <Button icon={<GlobalOutlined />}>
+              <FormattedMessage id="Select.Language" /> <DownOutlined />
             </Button>
           </Dropdown>
 

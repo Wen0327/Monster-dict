@@ -1,6 +1,7 @@
 {
-    "zh-TW": {
-        "welcome": "大歡迎"
-    }
+  "zh-TW": {
+    "welcome": "大歡迎",
+    "Select.Language": "選擇語言",
+    "Fave.Character":"彈珠性闢評比"
   }
-  
+}
