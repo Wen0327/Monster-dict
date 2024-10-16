@@ -72,7 +72,9 @@ const NavigationBar = ({ switchLanguage }) => {
           />
           {/* 导航菜单 */}
           <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Item style={{ textAlign:'center', minWidth: '120px' }} key="1" ><FormattedMessage id='Fave.Character'/></Item>
+            <Item style={{ textAlign: "center", minWidth: "120px" }} key="1">
+              <FormattedMessage id="Fave.Character" />
+            </Item>
           </Menu>
         </div>
 
@@ -85,10 +87,7 @@ const NavigationBar = ({ switchLanguage }) => {
             </Button>
           </Dropdown>
 
-          <DarkModeToggle
-            darkMode={darkMode}
-            onClick={toggleDarkMode}
-          ></DarkModeToggle>
+          <DarkModeToggle darkMode={darkMode} onClick={toggleDarkMode} />
         </div>
       </Header>
     </Layout>
