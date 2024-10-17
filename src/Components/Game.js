@@ -13,8 +13,8 @@ const ImgContainer = styled.div`
   justify-content: center;
   gap: 20px;
 
-   /* rwd */
-   @media (max-width: 768px) {
+  /* rwd */
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -39,17 +39,41 @@ const Game = ({ currentLanguage }) => {
   }, [remainImgs]);
 
   const RenderImg = ({ index }) => {
+    const [loaded, setLoaded] = useState(false);
+
     return (
-      <img
-        src={remainImgs[index]}
-        alt="Image"
+      <div
         style={{
-          width: "500px",
-          maxWidth: "100%",
-          cursor: remainImgs.length === 1 ? "default" : "pointer",
+          position: "relative",
+          width: "100%",
+          aspectRatio: "1/1",
+          opacity: loaded ? 1 : 0,
+          transition: "opacity 0.25s ease-in-out",
         }}
-        onClick={remainImgs.length > 1 ? () => handleClick(index) : null}
-      />
+      >
+        {!loaded && (
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              top: 0,
+              left: 0,
+            }}
+          />
+        )}
+        <img
+          src={remainImgs[index]}
+          alt="Image"
+          style={{
+            width: "100%",
+            height: "100%",
+            display: loaded ? "block" : "none",
+          }}
+          onLoad={() => setLoaded(true)}
+          onClick={remainImgs.length > 1 ? () => handleClick(index) : null}
+        />
+      </div>
     );
   };
 
@@ -104,15 +128,18 @@ const Game = ({ currentLanguage }) => {
 
   if (remainImgs.length === 2) {
     return (
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <div>
         <h3>
           <FormattedMessage id="Choose.Character" />
         </h3>
         <RenderProgress />
-        <ImgContainer>
-          <RenderImg index={0} />
-          <RenderImg index={1} />
-        </ImgContainer>
+
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          <ImgContainer>
+            <RenderImg index={0} />
+            <RenderImg index={1} />
+          </ImgContainer>
+        </div>
       </div>
     );
   }
@@ -120,15 +147,18 @@ const Game = ({ currentLanguage }) => {
   const [randomIndex1, randomIndex2] = randomIndices;
 
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div>
       <h3>
         <FormattedMessage id="Choose.Character" />
       </h3>
       <RenderProgress />
-      <ImgContainer>
-        <RenderImg index={randomIndex1} />
-        <RenderImg index={randomIndex2} />
-      </ImgContainer>
+
+      <div style={{ marginTop: "20px" }}>
+        <ImgContainer>
+          <RenderImg index={randomIndex1} />
+          <RenderImg index={randomIndex2} />
+        </ImgContainer>
+      </div>
     </div>
   );
 };

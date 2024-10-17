@@ -6,7 +6,6 @@ import {
   SunOutlined,
   MoonOutlined,
 } from "@ant-design/icons";
-import luciferLogo from "../Static/Images/luficer.png";
 import styled from "styled-components";
 import "../style.scss";
 import { FormattedMessage } from "react-intl";
@@ -77,13 +76,8 @@ const NavigationBar = ({ switchLanguage }) => {
     <Layout>
       <Header className="custom-header">
         <div style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={luciferLogo}
-            alt="logo"
-            style={{ height: "40px", marginRight: "20px" }}
-          />
           <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Item style={{ textAlign: "center", minWidth: "120px" }} key="1">
+            <Item style={{ textAlign: "center", minWidth: "110px" }} key="1">
               <FormattedMessage id="Fave.Character" />
             </Item>
           </Menu>
