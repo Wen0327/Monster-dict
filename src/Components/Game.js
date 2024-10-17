@@ -12,6 +12,11 @@ const ImgContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 20px;
+
+   /* rwd */
+   @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Game = ({ currentLanguage }) => {
@@ -40,6 +45,7 @@ const Game = ({ currentLanguage }) => {
         alt="Image"
         style={{
           width: "500px",
+          maxWidth: "100%",
           cursor: remainImgs.length === 1 ? "default" : "pointer",
         }}
         onClick={remainImgs.length > 1 ? () => handleClick(index) : null}
