@@ -36,7 +36,7 @@ module.exports = {
     ],
   },
   devServer: {
-    static: path.join(__dirname, 'dist'),  // 修改 static 文件夹为 dist
+    static: path.join(__dirname, 'build'),  // 修改 static 文件夹为 build
     compress: true,
     port: 3000,
     historyApiFallback: true, // 支持 BrowserRouter 的刷新和路由
@@ -50,7 +50,7 @@ module.exports = {
       patterns: [
         {
           from: 'public',  // 從 public 文件夹复制资源
-          to: '.',         // 複製到 dist 根目錄
+          to: '.',         // 複製到 build 根目錄
           globOptions: {
             ignore: ['**/index.html'],  // 忽略複製 index.html
           },
