@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 
 const totalImages = [];
-for (let i = 1; i <= 300; i++) {
+for (let i = 1; i <= 3; i++) {
   totalImages.push(`/RandomImg/${i}.png`);
 }
 
@@ -179,7 +179,7 @@ const Game = ({ currentLanguage }) => {
         <h3>
           <FormattedMessage id="Fave.Answer" />
         </h3>
-        <img src={remainImgs[0]} alt="Image" />
+        <img src={remainImgs[0]} alt="Image" style={{maxWidth:"100%"}} />
       </div>
     );
   }
