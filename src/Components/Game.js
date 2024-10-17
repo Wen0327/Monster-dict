@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 
-
 const images = [];
+
 for (let i = 1; i <= 300; i++) {
-  images.push(`/RandomImg/${i}.png`);  // 從 public 文件夾內加載
+  images.push(`/RandomImg/${i}.png`); 
 }
 
 const Game = () => {
   // init all img in remainImgs
 
   const [remainImgs, setRemainImgs] = useState(images);
-
 
   const handleClick = (index, randomIndex1, randomIndex2) => {
     const selected = remainImgs[index];
