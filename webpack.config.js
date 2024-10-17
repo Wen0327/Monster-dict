@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',  // 项目的入口文件
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
   },
   module: {
     rules: [
