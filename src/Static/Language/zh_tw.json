@@ -5,6 +5,18 @@
     "Fave.Character": "彈珠性闢評比",
     "Game.Start": "遊戲開始 !",
     "Choose.Character": "選擇喜歡的角色",
-    "Fave.Answer": "我最喜歡的角色是！"
+    "Fave.Answer": "我最喜歡的角色是！",
+    "Normal.Mode": "正常模式 (完整300隻角色)",
+    "Half.Mode": "一半模式 (隨機150隻角色)",
+    "Quarter.Mode": "1/4模式 (隨機75隻角色)",
+    "Final.Match": "總決賽",
+    "Semi.Finals": "半決賽",
+    "Quarter.Finals": "八強賽",
+    "Round.of.16": "十六強賽",
+    "Round.of.32": "三十二強賽",
+    "Round.of.64": "六十四強賽",
+    "Round.of.128": "一百二十八強賽",
+    "Round.of.256": "二百五十六強賽",
+    "Choose.Game.Mode": "選擇遊戲模式"
   }
 }

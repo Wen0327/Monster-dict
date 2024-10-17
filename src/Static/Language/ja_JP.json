@@ -1,11 +1,22 @@
 {
-    "ja-JP": {
-        "welcome": "学ぶ",
-        "Select.Language":"言語を選択",
-        "Fave.Character":"推しキャラ",
-        "Game.Start":"スタート！",
-        "Choose.Character":"お気に入りのキャラクターを選んでください",
-        "Fave.Answer":"推しキャラはこれです！"
-    }
+  "ja-JP": {
+    "welcome": "学ぶ",
+    "Select.Language": "言語を選択",
+    "Fave.Character": "推しキャラ",
+    "Game.Start": "スタート！",
+    "Choose.Character": "お気に入りのキャラクターを選んでください",
+    "Fave.Answer": "推しキャラはこれです！",
+    "Normal.Mode": "標準モード (登場キャラ300体)",
+    "Half.Mode": "ハーフモード (ランダムで登場キャラ150体)",
+    "Quarter.Mode": "クォーターモード (ランダムで登場キャラ75体)",
+    "Final.Match": "決勝戦",
+    "Semi.Finals": "準決勝",
+    "Quarter.Finals": "準々決勝",
+    "Round.of.16": "16強戦",
+    "Round.of.32": "32強戦",
+    "Round.of.64": "64強戦",
+    "Round.of.128": "128強戦",
+    "Round.of.256": "256強戦",
+    "Choose.Game.Mode": "ゲームモードをお選びください"
   }
-  
+}

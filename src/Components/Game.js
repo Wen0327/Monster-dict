@@ -1,3 +1,4 @@
+import { Button } from "antd";
 import React, { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
@@ -12,6 +13,17 @@ const ImgContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 20px;
+
+  /* rwd */
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const ModeButtonContainer = styled.div`
+  display: inline-flex;
+  justify-content: center;
+  gap: 10px;
 
   /* rwd */
   @media (max-width: 768px) {
@@ -141,10 +153,20 @@ const Game = ({ currentLanguage }) => {
   if (!gameStarted) {
     return (
       <div style={{ textAlign: "center", marginTop: "20px" }}>
-        <h3>選擇遊戲模式</h3>
-        <button onClick={() => startGame("normal")}>正常模式 (300張圖)</button>
-        <button onClick={() => startGame("half")}>一半模式 (150張圖)</button>
-        <button onClick={() => startGame("quarter")}>1/4模式 (75張圖)</button>
+        <h3>
+          <FormattedMessage id="Choose.Game.Mode" />
+        </h3>
+        <ModeButtonContainer>
+          <Button onClick={() => startGame("normal")}>
+            <FormattedMessage id="Normal.Mode" />
+          </Button>
+          <Button onClick={() => startGame("half")}>
+            <FormattedMessage id="Half.Mode" />
+          </Button>
+          <Button onClick={() => startGame("quarter")}>
+            <FormattedMessage id="Quarter.Mode" />
+          </Button>
+        </ModeButtonContainer>
       </div>
     );
   }
@@ -166,6 +188,9 @@ const Game = ({ currentLanguage }) => {
     return (
       <div>
         <h3>
+          <FormattedMessage id="Final.Match" />
+        </h3>
+        <h3>
           <FormattedMessage id="Choose.Character" />
         </h3>
         <RenderProgress />
@@ -182,8 +207,32 @@ const Game = ({ currentLanguage }) => {
 
   const [randomIndex1, randomIndex2] = randomIndices;
 
+  const MatchCounter = () => {
+    const showCounts = {
+      256: "Round.of.256",
+      128: "Round.of.128",
+      64: "Round.of.64",
+      32: "Round.of.32",
+      16: "Round.of.16",
+      8: "Quarter.Finals",
+      4: "Semi.Finals",
+      2: "Final.Match",
+    };
+
+    const currentLength = remainImgs.length;
+
+    if (!showCounts[currentLength]) return null;
+
+    return (
+      <h3>
+        <FormattedMessage id={showCounts[currentLength]} />
+      </h3>
+    );
+  };
+
   return (
     <div>
+      <MatchCounter />
       <h3>
         <FormattedMessage id="Choose.Character" />
       </h3>
