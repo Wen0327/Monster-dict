@@ -2,8 +2,9 @@
   "zh-TW": {
     "welcome": "大歡迎",
     "Select.Language": "選擇語言",
-    "Fave.Character":"彈珠性闢評比",
-    "Game.Start":"遊戲開始 !",
-    "Choose.Character":"選擇喜歡的角色"
+    "Fave.Character": "彈珠性闢評比",
+    "Game.Start": "遊戲開始 !",
+    "Choose.Character": "選擇喜歡的角色",
+    "Fave.Answer": "我最喜歡的角色是！"
   }
 }

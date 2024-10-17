@@ -52,7 +52,6 @@ const NavigationBar = ({ switchLanguage }) => {
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    // You can add dark mode toggle logic here, such as adding/removing dark class
     if (!darkMode) {
       document.body.classList.add("dark-mode");
     } else {
@@ -77,22 +76,18 @@ const NavigationBar = ({ switchLanguage }) => {
   return (
     <Layout>
       <Header className="custom-header">
-        {/* 左侧 logo */}
         <div style={{ display: "flex", alignItems: "center" }}>
           <img
             src={luciferLogo}
             alt="logo"
             style={{ height: "40px", marginRight: "20px" }}
           />
-          {/* 导航菜单 */}
           <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
             <Item style={{ textAlign: "center", minWidth: "120px" }} key="1">
               <FormattedMessage id="Fave.Character" />
             </Item>
           </Menu>
         </div>
-
-        {/* 右侧语言切换按钮 */}
 
         <div className="displayToggle">
           <Dropdown overlay={languageMenu} trigger={["click"]}>
