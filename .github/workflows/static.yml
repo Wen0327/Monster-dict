@@ -31,17 +31,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache Node modules
-        uses: actions/cache@v4.1.1
-        with:
-          # 指定要緩存的文件夾
-          path: ~/.npm
-          # 緩存的鍵，通常包括操作系統和 package-lock.json 的哈希值
-          key: npm-cache-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          # 恢復的鍵，當鍵匹配失敗時使用
-          restore-keys: |
-            npm-cache-${{ runner.os }}-
-
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -52,6 +41,10 @@ jobs:
 
       - name: Build React App
         run: npm run build
+
+      # 新增步驟：列出 build 目錄的內容
+      - name: List build directory contents
+        run: ls -la ./build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
