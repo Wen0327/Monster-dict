@@ -32,7 +32,7 @@ const App = () => {
               <FormattedMessage id="Game.Start" />
             </Button>
           ) : (
-            <Game /> 
+            <Game currentLanguage={locale}/> 
           )}
         </Content>
       </Layout>

@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 
 const images = [];
-
 for (let i = 1; i <= 300; i++) {
   images.push(`/RandomImg/${i}.png`); 
 }
 
-const Game = () => {
-  // init all img in remainImgs
-
+const Game = ({ currentLanguage }) => {
+  // init all img
   const [remainImgs, setRemainImgs] = useState(images);
+  const [randomIndices, setRandomIndices] = useState([0, 1]);
+  const totalImages = images.length;
+
+  // useEffect to log language change
+  useEffect(() => {
+    console.log("Language switched to:", currentLanguage);
+  }, [currentLanguage]);
+
+  // useEffect to generate random indices when remainImgs change
+  useEffect(() => {
+    if (remainImgs.length > 2) {
+      const [randomIndex1, randomIndex2] = getRandomImageIndices();
+      setRandomIndices([randomIndex1, randomIndex2]);
+    }
+  }, [remainImgs]);
 
   const handleClick = (index, randomIndex1, randomIndex2) => {
     const selected = remainImgs[index];
@@ -20,7 +34,7 @@ const Game = () => {
     );
     const newArr2 = remainingImages.filter((_, i) => i !== index);
 
-    // renew remainImgs
+    // renew remaining images
     setRemainImgs((prevRemainImgs) =>
       prevRemainImgs.filter(
         (image) => image === selected || !newArr2.includes(image)
@@ -36,7 +50,7 @@ const Game = () => {
     const randomIndex1 = Math.floor(Math.random() * remainImgs.length);
     let randomIndex2 = Math.floor(Math.random() * remainImgs.length);
 
-    // to ensure randomIndex2 not same as randomIndex1
+    // ensure randomIndex2 not the same as randomIndex1
     while (randomIndex2 === randomIndex1) {
       randomIndex2 = Math.floor(Math.random() * remainImgs.length);
     }
@@ -44,7 +58,8 @@ const Game = () => {
     return [randomIndex1, randomIndex2];
   };
 
-  // return final img when all other img been remove
+  const progress = ((totalImages - remainImgs.length) / totalImages) * 100;
+
   if (remainImgs.length === 1) {
     return (
       <div style={{ textAlign: "center", marginTop: "20px" }}>
@@ -54,12 +69,29 @@ const Game = () => {
     );
   }
 
-  const [randomIndex1, randomIndex2] = getRandomImageIndices();
+// save random index
+  const [randomIndex1, randomIndex2] = randomIndices; 
 
   return (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
-      <h3>選擇一個圖片:</h3>
-      <div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
+    <div style={{ marginTop: "20px" }}>
+      <h3>
+        <FormattedMessage id="Choose.Character" />
+      </h3>
+      <progress
+        value={progress}
+        max="100"
+        style={{ width: "80%", height: "20px", marginBottom: "20px" }}
+      >
+        {progress}%
+      </progress>
+      <div
+        style={{
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+          gap: "20px",
+        }}
+      >
         <img
           src={remainImgs[randomIndex1]}
           alt="Image 1"
