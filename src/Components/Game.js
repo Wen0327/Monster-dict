@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 
 const images = [];
-for (let i = 1; i <= 300; i++) {
+for (let i = 1; i <= 3; i++) {
   images.push(`/RandomImg/${i}.png`);
 }
 
@@ -66,8 +66,8 @@ const Game = ({ currentLanguage }) => {
           src={remainImgs[index]}
           alt="Image"
           style={{
-            width: "100%",
-            height: "100%",
+            width: remainImgs.length > 1 ? "100%" : "",
+            height: remainImgs.length > 1 ? "100%" : "",
             display: loaded ? "block" : "none",
           }}
           onLoad={() => setLoaded(true)}
@@ -89,11 +89,11 @@ const Game = ({ currentLanguage }) => {
     );
   };
 
-  const handleClick = (index) => {
-    // only remove not select
-    const remainingImages = remainImgs.filter((_, i) => i !== index);
+  const handleClick = (clickedIndex) => {
+    const remainingImages = remainImgs.filter(
+      (_, i) => i === clickedIndex || !randomIndices.includes(i)
+    );
 
-    // renew remaining images
     setRemainImgs(remainingImages);
   };
 
@@ -117,11 +117,13 @@ const Game = ({ currentLanguage }) => {
 
   if (remainImgs.length === 1) {
     return (
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <div
+        style={{ alignItems: "center", textAlign: "center", marginTop: "20px" }}
+      >
         <h3>
           <FormattedMessage id="Fave.Answer" />
         </h3>
-        <RenderImg index={0} />
+        <img src={remainImgs[0]} alt="Image" />
       </div>
     );
   }
