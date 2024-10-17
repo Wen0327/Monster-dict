@@ -40,9 +40,7 @@ const Game = ({ currentLanguage }) => {
   const [mode, setMode] = useState(null);
 
   // useEffect to log language change
-  useEffect(() => {
-    console.log("Language switched to:", currentLanguage);
-  }, [currentLanguage]);
+  useEffect(() => {}, [currentLanguage]);
 
   // useEffect to generate random indices when remainImgs change
   useEffect(() => {
@@ -73,7 +71,7 @@ const Game = ({ currentLanguage }) => {
     return shuffled.slice(0, count);
   };
 
-  const RenderImg = ({ index }) => {
+  const RenderImg = ({ index, onClick }) => {
     const [loaded, setLoaded] = useState(false);
 
     return (
@@ -106,7 +104,7 @@ const Game = ({ currentLanguage }) => {
             display: loaded ? "block" : "none",
           }}
           onLoad={() => setLoaded(true)}
-          onClick={remainImgs.length > 1 ? () => handleClick(index) : null}
+          onClick={remainImgs.length > 1 ? onClick : null}
         />
       </div>
     );
@@ -127,11 +125,18 @@ const Game = ({ currentLanguage }) => {
   };
 
   const handleClick = (clickedIndex) => {
-    const remainingImages = remainImgs.filter(
-      (_, i) => i === clickedIndex || !randomIndices.includes(i)
-    );
 
-    setRemainImgs(remainingImages);
+    if (remainImgs.length === 2) {
+      const selectedImage = remainImgs[clickedIndex];
+
+      setRemainImgs([selectedImage]);
+    } else {
+      const remainingImages = remainImgs.filter(
+        (_, i) => i === clickedIndex || !randomIndices.includes(i)
+      );
+
+      setRemainImgs(remainingImages);
+    }
   };
 
   const getRandomImageIndices = () => {
@@ -148,6 +153,12 @@ const Game = ({ currentLanguage }) => {
     }
 
     return [randomIndex1, randomIndex2];
+  };
+
+  const restartGame = () => {
+    setGameStarted(false);
+    setRemainImgs([]);
+    setMode(null);
   };
 
   if (!gameStarted) {
@@ -179,7 +190,11 @@ const Game = ({ currentLanguage }) => {
         <h3>
           <FormattedMessage id="Fave.Answer" />
         </h3>
-        <img src={remainImgs[0]} alt="Image" style={{maxWidth:"100%"}} />
+        <img src={remainImgs[0]} alt="Image" style={{ maxWidth: "100%" }} />
+
+        <Button onClick={restartGame} style={{ marginTop: "20px" }}>
+          <FormattedMessage id="Restart.Game" defaultMessage="Restart Game" />
+        </Button>
       </div>
     );
   }
@@ -197,8 +212,8 @@ const Game = ({ currentLanguage }) => {
 
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           <ImgContainer>
-            <RenderImg index={0} />
-            <RenderImg index={1} />
+            <RenderImg index={0} onClick={() => handleClick(0)} />
+            <RenderImg index={1} onClick={() => handleClick(1)} />
           </ImgContainer>
         </div>
       </div>
@@ -206,6 +221,8 @@ const Game = ({ currentLanguage }) => {
   }
 
   const [randomIndex1, randomIndex2] = randomIndices;
+
+  console.log(randomIndices);
 
   const MatchCounter = () => {
     const showCounts = {
@@ -240,8 +257,14 @@ const Game = ({ currentLanguage }) => {
 
       <div style={{ marginTop: "20px" }}>
         <ImgContainer>
-          <RenderImg index={randomIndex1} />
-          <RenderImg index={randomIndex2} />
+          <RenderImg
+            index={randomIndex1}
+            onClick={() => handleClick(randomIndex1)}
+          />
+          <RenderImg
+            index={randomIndex2}
+            onClick={() => handleClick(randomIndex2)}
+          />
         </ImgContainer>
       </div>
     </div>
