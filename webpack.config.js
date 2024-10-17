@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',  // 项目的入口文件
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'build'), // 将输出目录设置为 build
   },
   module: {
     rules: [
@@ -15,6 +15,14 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: [
+              'babel-plugin-styled-components',
+              '@babel/plugin-proposal-nullish-coalescing-operator',
+              '@babel/plugin-proposal-optional-chaining'
+            ]
+          }
         },
       },
       {
@@ -28,7 +36,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[hash].[ext]',  // 输出图片时的文件名格式
-              outputPath: 'images',          // 输出到 dist/images 目录下
+              outputPath: 'images',          // 输出到 build/images 目录下
             },
           },
         ],
@@ -49,10 +57,10 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'public',  // 從 public 文件夹复制资源
-          to: '.',         // 複製到 build 根目錄
+          from: 'public',  // 从 public 文件夹复制资源
+          to: '.',         // 复制到 build 根目录
           globOptions: {
-            ignore: ['**/index.html'],  // 忽略複製 index.html
+            ignore: ['**/index.html'],  // 忽略复制 index.html
           },
         },
       ],
