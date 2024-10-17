@@ -17,37 +17,39 @@ const Item = Menu.Item;
 const NavigationBar = ({ switchLanguage }) => {
   const [darkMode, setDarkMode] = useState(false);
 
-  const DarkModeToggle = styled.div`
-  display: inline-block;
-  position: relative;
-  width: 50px;
-  height: 25px;
-  background-color: ${(props) => (props.darkMode ? "#333" : "#f0f0f0")};
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  const DarkModeToggle = styled.div.attrs({
+    darkMode: undefined,
+  })`
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: ${(props) => (props.darkMode ? "#333" : "#f0f0f0")};
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 
-  &:before {
-    content: "";
-    position: absolute;
-    top: 3px;
-    left: ${(props) => (props.darkMode ? "25px" : "3px")};
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    border-radius: 50%;
-    transition: left 0.3s ease;
-  }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: ${(props) => (props.darkMode ? "25px" : "3px")};
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      border-radius: 50%;
+      transition: left 0.3s ease;
+    }
 
-  .icon {
-    position: absolute;
-    top: 50%;
-    left: ${(props) => (props.darkMode ? "28px" : "6px")};
-    transform: translateY(-50%);
-    font-size: 14px;
-    transition: left 0.3s ease;
-  }
-`;
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: ${(props) => (props.darkMode ? "28px" : "6px")};
+      transform: translateY(-50%);
+      font-size: 14px;
+      transition: left 0.3s ease;
+    }
+  `;
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
