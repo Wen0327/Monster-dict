@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const totalImages = [];
 for (let i = 1; i <= 300; i++) {
-  totalImages.push(`/RandomImg/${i}.png`);
+  totalImages.push(`/Monster-dict/RandomImg/${i}.png`);
 }
 
 const ImgContainer = styled.div`
