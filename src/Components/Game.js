@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 
-const images = [];
-for (let i = 1; i <= 3; i++) {
-  images.push(`/RandomImg/${i}.png`);
+const totalImages = [];
+for (let i = 1; i <= 300; i++) {
+  totalImages.push(`/RandomImg/${i}.png`);
 }
 
 const ImgContainer = styled.div`
@@ -20,10 +20,12 @@ const ImgContainer = styled.div`
 `;
 
 const Game = ({ currentLanguage }) => {
-  // init all img
-  const [remainImgs, setRemainImgs] = useState(images);
+  // State to track if game has started
+  const [gameStarted, setGameStarted] = useState(false);
+  const [remainImgs, setRemainImgs] = useState([]);
   const [randomIndices, setRandomIndices] = useState([0, 1]);
-  const totalImages = images.length;
+  const [totalImagesInGame, setTotalImagesInGame] = useState(0);
+  const [mode, setMode] = useState(null);
 
   // useEffect to log language change
   useEffect(() => {
@@ -37,6 +39,27 @@ const Game = ({ currentLanguage }) => {
       setRandomIndices([randomIndex1, randomIndex2]);
     }
   }, [remainImgs]);
+
+  // Function to start the game
+  const startGame = (selectedMode) => {
+    setMode(selectedMode);
+    let selectedImages = [];
+    if (selectedMode === "normal") {
+      selectedImages = [...totalImages];
+    } else if (selectedMode === "half") {
+      selectedImages = getRandomImages(totalImages, 150);
+    } else if (selectedMode === "quarter") {
+      selectedImages = getRandomImages(totalImages, 75);
+    }
+    setRemainImgs(selectedImages);
+    setTotalImagesInGame(selectedImages.length);
+    setGameStarted(true);
+  };
+
+  const getRandomImages = (imagesArray, count) => {
+    const shuffled = [...imagesArray].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  };
 
   const RenderImg = ({ index }) => {
     const [loaded, setLoaded] = useState(false);
@@ -78,6 +101,8 @@ const Game = ({ currentLanguage }) => {
   };
 
   const RenderProgress = () => {
+    const progress =
+      ((totalImagesInGame - remainImgs.length) / totalImagesInGame) * 100;
     return (
       <progress
         value={progress}
@@ -113,7 +138,16 @@ const Game = ({ currentLanguage }) => {
     return [randomIndex1, randomIndex2];
   };
 
-  const progress = ((totalImages - remainImgs.length) / totalImages) * 100;
+  if (!gameStarted) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <h3>選擇遊戲模式</h3>
+        <button onClick={() => startGame("normal")}>正常模式 (300張圖)</button>
+        <button onClick={() => startGame("half")}>一半模式 (150張圖)</button>
+        <button onClick={() => startGame("quarter")}>1/4模式 (75張圖)</button>
+      </div>
+    );
+  }
 
   if (remainImgs.length === 1) {
     return (
