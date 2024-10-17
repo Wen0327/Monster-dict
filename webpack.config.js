@@ -6,7 +6,8 @@ module.exports = {
   entry: './src/index.js',  // 项目的入口文件
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build'), // 将输出目录设置为 build
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/Monster-dict/', // 将输出目录设置为 build
   },
   module: {
     rules: [
