@@ -18,6 +18,7 @@
     "Round.of.128": "一百二十八强赛",
     "Round.of.256": "二百五十六强赛",
     "Choose.Game.Mode": "选择游戏模式",
-    "Restart.Game": "重新开始游戏"
+    "Restart.Game": "重新开始游戏",
+    "Current.Select":"最近点击的角色："
   }
 }

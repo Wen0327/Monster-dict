@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <Layout style={{ height: "100vh" }}>
+      <Layout style={{ minHeight: "100dvh"  }}>
         <NavigationBar switchLanguage={switchLanguage} />
         <Content style={{ padding: "20px", textAlign: "center" }}>
           {!startGame ? (

@@ -18,6 +18,7 @@
     "Round.of.128": "128強戦",
     "Round.of.256": "256強戦",
     "Choose.Game.Mode": "ゲームモードをお選びください",
-    "Restart.Game": "ゲームを再開する"
+    "Restart.Game": "ゲームを再開する",
+    "Current.Select": "最後にクリックしたキャラクター"
   }
 }

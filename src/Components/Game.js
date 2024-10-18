@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 
-const basePath = process.env.PUBLIC_URL || '';
+const basePath = process.env.PUBLIC_URL || "";
 
 const totalImages = [];
 for (let i = 1; i <= 300; i++) {
@@ -33,16 +33,14 @@ const ModeButtonContainer = styled.div`
   }
 `;
 
-const Game = ({ currentLanguage }) => {
+const Game = () => {
   // State to track if game has started
   const [gameStarted, setGameStarted] = useState(false);
   const [remainImgs, setRemainImgs] = useState([]);
   const [randomIndices, setRandomIndices] = useState([0, 1]);
   const [totalImagesInGame, setTotalImagesInGame] = useState(0);
   const [mode, setMode] = useState(null);
-
-  // useEffect to log language change
-  useEffect(() => {}, [currentLanguage]);
+  const [clickedImages, setClickedImages] = useState([]); // 新增状态来跟踪点击的角色
 
   // useEffect to generate random indices when remainImgs change
   useEffect(() => {
@@ -127,10 +125,17 @@ const Game = ({ currentLanguage }) => {
   };
 
   const handleClick = (clickedIndex) => {
+    const selectedImage = remainImgs[clickedIndex];
+
+    setClickedImages((prev) => {
+      const updated = [
+        ...prev.filter((img) => img !== selectedImage),
+        selectedImage,
+      ];
+      return updated.slice(-10);
+    });
 
     if (remainImgs.length === 2) {
-      const selectedImage = remainImgs[clickedIndex];
-
       setRemainImgs([selectedImage]);
     } else {
       const remainingImages = remainImgs.filter(
@@ -161,11 +166,13 @@ const Game = ({ currentLanguage }) => {
     setGameStarted(false);
     setRemainImgs([]);
     setMode(null);
+    setClickedImages([]);
   };
 
   if (!gameStarted) {
     return (
       <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <h4>*New feat: Final select ranking</h4>
         <h3>
           <FormattedMessage id="Choose.Game.Mode" />
         </h3>
@@ -193,6 +200,23 @@ const Game = ({ currentLanguage }) => {
           <FormattedMessage id="Fave.Answer" />
         </h3>
         <img src={remainImgs[0]} alt="Image" style={{ maxWidth: "100%" }} />
+
+        <h4>
+          <FormattedMessage id="Current.Select" />
+        </h4>
+        <div style={{ display: "flow", justifyContent: "center", gap: "10px" }}>
+          {clickedImages
+            .reverse()
+            .slice(1)
+            .map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`Clicked ${index + 1}`}
+                style={{ width: "50px", height: "50px" }}
+              />
+            ))}
+        </div>
 
         <Button onClick={restartGame} style={{ marginTop: "20px" }}>
           <FormattedMessage id="Restart.Game" defaultMessage="Restart Game" />
@@ -223,8 +247,6 @@ const Game = ({ currentLanguage }) => {
   }
 
   const [randomIndex1, randomIndex2] = randomIndices;
-
-  console.log(randomIndices);
 
   const MatchCounter = () => {
     const showCounts = {
