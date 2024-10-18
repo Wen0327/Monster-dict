@@ -207,7 +207,6 @@ const Game = () => {
         <div style={{ display: "flow", justifyContent: "center", gap: "10px" }}>
           {clickedImages
             .reverse()
-            .slice(1)
             .map((img, index) => (
               <img
                 key={index}
