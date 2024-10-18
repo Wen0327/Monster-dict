@@ -194,30 +194,30 @@ const Game = () => {
   if (remainImgs.length === 1) {
     return (
       <div
-        style={{ alignItems: "center", textAlign: "center", marginTop: "20px" }}
+        style={{ alignItems: "center", textAlign: "center" }}
       >
         <h3>
           <FormattedMessage id="Fave.Answer" />
         </h3>
-        <img src={remainImgs[0]} alt="Image" style={{ maxWidth: "100%" }} />
+        <img src={remainImgs[0]} alt="Image" style={{ maxWidth: "80%",maxHeight:'80%' }} />
 
         <h4>
           <FormattedMessage id="Current.Select" />
         </h4>
         <div style={{ display: "flow", justifyContent: "center", gap: "10px" }}>
           {clickedImages
-            .reverse()
+            .reverse().slice(1)
             .map((img, index) => (
               <img
                 key={index}
                 src={img}
                 alt={`Clicked ${index + 1}`}
-                style={{ width: "50px", height: "50px" }}
+                style={{ width: "100px", height: "100px" }}
               />
             ))}
         </div>
 
-        <Button onClick={restartGame} style={{ marginTop: "20px" }}>
+        <Button onClick={restartGame} style={{ marginTop: "20px" ,marginBottom:'20px' }}>
           <FormattedMessage id="Restart.Game" defaultMessage="Restart Game" />
         </Button>
       </div>
