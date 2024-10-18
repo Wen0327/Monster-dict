@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 
+const basePath = process.env.PUBLIC_URL || '';
+
 const totalImages = [];
 for (let i = 1; i <= 300; i++) {
-  totalImages.push(`/Monster-dict/RandomImg/${i}.png`);
+  totalImages.push(`${basePath}/RandomImg/${i}.png`);
 }
 
 const ImgContainer = styled.div`

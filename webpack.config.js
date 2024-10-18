@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const webpack = require('webpack');
 
 module.exports = {
   entry: "./src/index.js", // 项目的入口文件
@@ -66,6 +67,10 @@ module.exports = {
           },
         },
       ],
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env.PUBLIC_URL': JSON.stringify('/Monster-dict'), // 定义 PUBLIC_URL
     }),
   ],
   mode: "development",
