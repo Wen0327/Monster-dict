@@ -5,10 +5,50 @@ $gray: #444;
 $light-gray: #555;
 $highlight-gray: rgba($White, 0.8);
 
+// Global dark mode styles
 body.dark-mode {
   background-color: $dark-gray;
   color: $White;
 
+  // Styling Antd Modal
+  .ant-modal {
+    background-color: $dark-gray;
+    color: $White;
+    border: 1px solid $light-gray;
+
+    .ant-modal-header {
+      background-color: $Black200;
+      color: $White;
+      border-bottom: 1px solid $gray;
+    }
+
+    .ant-modal-title {
+      color: $White;
+    }
+
+    .ant-modal-body {
+      background-color: $dark-gray;
+      color: $White;
+    }
+
+    .ant-modal-footer {
+      background-color: $Black200;
+      border-top: 1px solid $gray;
+
+      .ant-btn {
+        color: $White;
+        background-color: $light-gray;
+        border-color: $gray;
+
+        &:hover {
+          background-color: $gray;
+          border-color: $light-gray;
+        }
+      }
+    }
+  }
+
+  // Other styles
   a {
     color: $highlight-gray;
   }
@@ -53,6 +93,18 @@ body.dark-mode {
     border-color: $gray;
   }
 
+  .ant-modal .ant-modal-content {
+    background-color: $dark-gray;
+  }
+
+  .ant-modal-title {
+    background-color: $dark-gray;
+  }
+
+  .ant-modal .ant-modal-footer{
+    background-color: $dark-gray;
+  }
+
   .ant-dropdown-menu-item {
     color: $White;
 
@@ -94,6 +146,7 @@ body.dark-mode {
   }
 }
 
+// Dark mode toggle button
 .dark-mode-toggle {
   width: 50px;
   height: 25px;
@@ -114,6 +167,7 @@ body.dark-mode {
   }
 }
 
+// Custom header styles
 .custom-header {
   display: flex;
   justify-content: space-between;

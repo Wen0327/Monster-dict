@@ -103,7 +103,7 @@ const NavigationBar = ({ switchLanguage, setGame }) => {
               key="2"
               onClick={() => setGame("lottery")}
             >
-              <FormattedMessage id="Fave.Character" />
+              <FormattedMessage id="Gacha.Simulator" />
             </Item>
           </Menu>
         </div>

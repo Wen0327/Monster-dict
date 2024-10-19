@@ -19,6 +19,16 @@
     "Round.of.256": "二百五十六強賽",
     "Choose.Game.Mode": "選擇遊戲模式",
     "Restart.Game": "重新開始遊戲",
-    "Current.Select":"最近點擊的角色："
+    "Current.Select":"最近點擊的角色：",
+
+    "Use.JP.Anniversary.Data": "採用日版週年統計資料",
+    "Gacha.Simulator": "抽卡",
+    "Switch.Character": "切換角色",
+    "Ten.Draw": "10連抽",
+    "Top.20": "前20名",
+    "Other.Characters": "其他角色",
+    "Switch": "切換",
+    "Cancel": "取消",
+    "Redo.Ten.Draw": "重新10連"
   }
 }

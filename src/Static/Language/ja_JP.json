@@ -19,6 +19,16 @@
     "Round.of.256": "256強戦",
     "Choose.Game.Mode": "ゲームモードをお選びください",
     "Restart.Game": "ゲームを再開する",
-    "Current.Select": "最後にクリックしたキャラクター"
+    "Current.Select": "最後にクリックしたキャラクター",
+
+    "Use.JP.Anniversary.Data": "日本版周年データを使用",
+    "Gacha.Simulator": "ガチャ",
+    "Switch.Character": "キャラ切り替え",
+    "Ten.Draw": "10連ガチャ",
+    "Top.20": "トップ20",
+    "Other.Characters": "その他のキャラ",
+    "Switch": "切り替え",
+    "Cancel": "キャンセル",
+    "Redo.Ten.Draw": "もう一度10連"
   }
 }
