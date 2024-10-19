@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Button, Layout } from "antd";
-import { IntlProvider, FormattedMessage } from "react-intl";
+import { Layout } from "antd";
+import { IntlProvider } from "react-intl";
 import localeData from "../Static/Language/Setting/localeData";
 import NavigationBar from "./NavigationBar";
-import Game from "../Components/Game";
+import Game from "../Components/SelectWife";
+import Lottery from "../Components/Lottery";
 
 const { Content } = Layout;
 
@@ -11,8 +12,7 @@ const App = () => {
   const [locale, setLocale] = useState(
     localStorage.getItem("locale") || "zh-TW"
   );
-
-  const [startGame, setStartGame] = useState(false);
+  const [currentGame, setCurrentGame] = useState("game"); // 預設為 "game" 來顯示難度選擇
 
   const messages = localeData[locale] || localeData["zh-TW"];
 
@@ -24,16 +24,11 @@ const App = () => {
 
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <Layout style={{ minHeight: "100dvh"  }}>
-        <NavigationBar switchLanguage={switchLanguage} />
+      <Layout style={{ minHeight: "100dvh" }}>
+        <NavigationBar switchLanguage={switchLanguage} setGame={setCurrentGame} />
         <Content style={{ padding: "20px", textAlign: "center" }}>
-          {!startGame ? (
-            <Button onClick={() => setStartGame(true)}>
-              <FormattedMessage id="Game.Start" />
-            </Button>
-          ) : (
-            <Game currentLanguage={locale}/> 
-          )}
+          {currentGame === "game" && <Game currentLanguage={locale} />}
+          {currentGame === "lottery" && <Lottery currentLanguage={locale} />}
         </Content>
       </Layout>
     </IntlProvider>

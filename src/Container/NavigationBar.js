@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Layout, Menu, Input, Dropdown, Button } from "antd";
+import React, { useState, useEffect } from "react";
+import { Layout, Menu, Dropdown, Button } from "antd";
 import {
   GlobalOutlined,
   DownOutlined,
@@ -9,13 +9,24 @@ import {
 import styled from "styled-components";
 import "../style.scss";
 import { FormattedMessage } from "react-intl";
+import Game from "../Components/SelectWife";
+import Lottery from "../Components/Lottery";
 
 const { Header } = Layout;
-
 const Item = Menu.Item;
 
-const NavigationBar = ({ switchLanguage }) => {
+const NavigationBar = ({ switchLanguage, setGame }) => {
   const [darkMode, setDarkMode] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const DarkModeToggle = styled.div.attrs({
     darkMode: undefined,
@@ -79,7 +90,19 @@ const NavigationBar = ({ switchLanguage }) => {
       <Header className="custom-header">
         <div style={{ display: "flex", alignItems: "center" }}>
           <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Item style={{ textAlign: "center", minWidth: "110px" }} key="1">
+            <Item
+              style={{ textAlign: "center", minWidth: "110px" }}
+              key="1"
+              onClick={() => setGame("game")}
+            >
+              <FormattedMessage id="Fave.Character" />
+            </Item>
+
+            <Item
+              style={{ textAlign: "center", minWidth: "110px" }}
+              key="2"
+              onClick={() => setGame("lottery")}
+            >
               <FormattedMessage id="Fave.Character" />
             </Item>
           </Menu>
@@ -88,7 +111,11 @@ const NavigationBar = ({ switchLanguage }) => {
         <div className="displayToggle">
           <Dropdown overlay={languageMenu} trigger={["click"]}>
             <Button icon={<GlobalOutlined />}>
-              <FormattedMessage id="Select.Language" /> <DownOutlined />
+              {!isMobile && (
+                <>
+                  <FormattedMessage id="Select.Language" /> <DownOutlined />
+                </>
+              )}
             </Button>
           </Dropdown>
           <DarkModeToggle darkMode={darkMode} onClick={toggleDarkMode}>
