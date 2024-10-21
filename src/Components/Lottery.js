@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import { FormattedMessage } from "react-intl";
+import styled from "styled-components";
 
 const basePath = process.env.PUBLIC_URL || "";
 
@@ -8,6 +9,26 @@ const totalImages = [];
 for (let i = 0; i <= 100; i++) {
   totalImages.push(`${basePath}/LotteryChar/${i}.png`);
 }
+
+const ResBorder = styled.div`
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ResImg = styled.img`
+  width: 75px;
+  height: 75px;
+
+  /* rwd */
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+  }
+`;
 
 const Lottery = () => {
   const [results, setResults] = useState([]);
@@ -62,7 +83,7 @@ const Lottery = () => {
   const resetChar = () => {
     setResults([]);
     setShowRetry(false);
-    pullChar(); 
+    pullChar();
   };
 
   return (
@@ -73,7 +94,7 @@ const Lottery = () => {
 
       <Button
         onClick={() => setIsModalVisible(true)}
-        style={{ marginBottom: "20px" }}
+        style={{ marginBottom: "20px", marginRight: "10px" }}
       >
         <FormattedMessage
           id="Switch.Character"
@@ -194,23 +215,12 @@ const Lottery = () => {
                 }}
               >
                 {results.map((result, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      padding: "10px",
-                      border: "1px solid #ddd",
-                      borderRadius: "5px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <img
+                  <ResBorder key={index}>
+                    <ResImg
                       src={totalImages[result]}
                       alt={`Character ${result}`}
-                      style={{ width: "45px", height: "45px" }}
                     />
-                  </div>
+                  </ResBorder>
                 ))}
               </div>
 
